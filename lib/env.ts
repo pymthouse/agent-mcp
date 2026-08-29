@@ -5,6 +5,12 @@ function trimSlash(value: string): string {
 export function mcpPublicOrigin(req?: Request): string {
   const fromEnv = process.env.MCP_PUBLIC_ORIGIN?.trim();
   if (fromEnv) return trimSlash(fromEnv);
+  const vercelProd = process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim();
+  if (vercelProd) {
+    return trimSlash(
+      vercelProd.startsWith("http") ? vercelProd : `https://${vercelProd}`,
+    );
+  }
   if (req) {
     const host = req.headers.get("x-forwarded-host") || req.headers.get("host");
     const proto = req.headers.get("x-forwarded-proto") || "https";
@@ -56,7 +62,7 @@ export function discoveryOrigin(): string {
 
 export function consoleOrigin(): string {
   return trimSlash(
-    process.env.CONSOLE_ORIGIN?.trim() || "https://console.livepeer.org",
+    process.env.CONSOLE_ORIGIN?.trim() || "https://livepeer-console.vercel.app",
   );
 }
 

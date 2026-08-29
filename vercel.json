@@ -1,4 +1,11 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
-  "regions": ["iad1"]
+  "fluid": true,
+  "regions": ["iad1"],
+  "functions": {
+    "app/api/mcp/route.ts": {
+      "maxDuration": 800
+    }
+  }
 }
