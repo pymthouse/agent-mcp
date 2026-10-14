@@ -16,7 +16,7 @@
     "invite": "node scripts/emit-invite.mjs"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.30.0",
+    "@modelcontextprotocol/sdk": "^1.31.0",
     "@pymthouse/gateway-web": "^0.1.1",
     "jose": "^6.2.9",
     "next": "^15.1.0",
